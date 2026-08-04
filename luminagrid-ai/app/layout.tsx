@@ -1,24 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "LuminaGrid AI — Intelligent Data Ingestion",
-  description:
-    "Trusted data ingestion with enterprise-grade privacy and scalability. Parse CSV and Excel files with zero data leaving your machine.",
+  title: "LuminaGrid AI | Data Analytics",
+  description: "Intelligent data grid and visualization platform.",
 };
 
 export default function RootLayout({
@@ -27,23 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      suppressHydrationWarning
-    >
-      <head />
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </ThemeProvider>
+    // Hardcoding 'dark' here bypasses the broken ThemeProvider and matches your portfolio aesthetic
+    <html lang="en" className="dark">
+      <body className={`${inter.className} min-h-screen bg-[#09090b] text-slate-100 antialiased`}>
+        {children}
       </body>
     </html>
   );
