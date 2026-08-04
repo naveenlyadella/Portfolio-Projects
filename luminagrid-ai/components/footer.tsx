@@ -1,4 +1,4 @@
-import { Lock, Shield, Github } from "lucide-react"
+import { Lock, Shield } from "lucide-react"
 
 export function Footer() {
   return (
